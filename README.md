@@ -1,3 +1,18 @@
+# KrisTile.com remake
+This will be a remake in angular of the existing small business website. 
+There should be:
+- home 
+- services
+- about
+- contact 
+
+Site visitors will be able to:
+- contact the company owner
+- upload pictures of their job site
+- use our "quote form" to get an instant price estimate (based on their job specs)
+
+To build this site, we will be using AngularFun below:
+
 [![build status](https://secure.travis-ci.org/CaryLandholt/AngularFun.png)](http://travis-ci.org/CaryLandholt/AngularFun)
 [![dependency status](https://david-dm.org/CaryLandholt/AngularFun.png)](https://david-dm.org/CaryLandholt/AngularFun)
 # AngularFun
