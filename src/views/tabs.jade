@@ -1,6 +1,7 @@
 app:tabs
   app:tab(caption='Floor', selected='true')
     section()
+      h2 Floor Tile 
       div
         a Contact us
         |  about your floor project.
@@ -8,10 +9,12 @@ app:tabs
       div
         a Gallery
       form.well
+        h3 Step 1: Calcuate a total quote
         div
           span.text
           | Number of square feet:
           input.input-small
+          a (what's my square footage?)
         div
           span.text
             | Sealer:
@@ -24,10 +27,21 @@ app:tabs
           span.text
             | Your total is: $__
         button.btn.btn-primary
-          | Continue with order
+          | Add to cart 
         //- CHECK html conventions correct?
-        p or
-        button Contact us
+        h3 Step 2: Upload pictures
+        p How does the existing area currently look like? 
+        button Upload pictures
+        h3 Step 3: Schedule a date
+        p When would you like for us to do the installation?
+        h3 Step 4: Your contact info
+        span.text Phone
+        input
+        span.text Email
+        input
+        span.text-box Message
+        input
+
 
   app:tab(caption='Shower')
     section(ng-controller='gitHubController as controller')
