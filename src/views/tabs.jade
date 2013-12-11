@@ -1,0 +1,56 @@
+app:tabs
+  app:tab(caption='Floor')
+    section(ng-controller='gitHubController as controller')
+
+  app:tab(caption='Shower')
+    section(ng-controller='gitHubController as controller')
+
+  app:tab(caption='Backsplash')
+    section(ng-controller='gitHubController as controller')
+
+
+  app:tab(caption='GitHub', selected='true')
+    section(ng-controller='gitHubController as controller')
+      .alert.alert-info(ng-show='!controller.searchTerm.length')
+        h4.alert-heading Heads up!
+        span Enter GitHub search criteria.
+      form.well.form-search(ng-submit='controller.search(controller.searchTerm)')
+        input.input-medium.search-query(type='text', ng-model='controller.searchTerm')
+        button.btn(type='submit')
+          i.glyphicon.glyphicon-search
+          | Search
+      ul(ng-hide='!controller.repos.length')
+        li(ng-repeat='repo in controller.repos track by repo.id | orderBy:\'pushed_at\':true')
+          a(ng-href='{{repo.clone_url}}', ng-bind='repo.name', target='_blank')
+          div(ng-bind='repo.description')
+
+  app:tab(caption='People')
+    .row
+      .col-lg-6
+        section(ng-controller='personController as controller')
+          .alert.alert-danger(ng-show='!!controller.error')
+            h4.alert-heading(ng-bind='controller.error.title')
+            span(ng-bind='controller.error.message')
+          form.well.form-search(ng-submit='controller.insertPerson(controller.person)')
+            p
+              span.label.label-info Heads up!
+              span.text-info Try adding a duplicate name.
+            input.input-medium(type='text', ng-model='controller.person.name', placeholder='Name')
+            input.input-small(type='text', ng-model='controller.person.age', placeholder='Age')
+            button.btn(type='submit')
+              i.glyphicon.glyphicon-plus
+              | Add Person
+          ul(ng-hide='!controller.people.length')
+            li.row(ng-repeat='person in controller.people track by person.id | orderBy:\'name\'')
+              a(ng-href='#/people/{{person.id}}', ng-bind='person.name')
+
+         //- <div class="col-lg-2">
+          //-       <section ng-controller="personDetailsController as controller">
+          //-         <dl>
+          //-           <dt>Name</dt>
+          //-           <dd ng-bind="controller.person.name"></dd>
+          //-           <dt>Age</dt>
+          //-           <dd ng-bind="controller.person.age"></dd>
+          //-         </dl>
+          //-       </section>
+          //-     </div> 
