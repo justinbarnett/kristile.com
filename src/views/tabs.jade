@@ -1,6 +1,33 @@
 app:tabs
-  app:tab(caption='Floor')
-    section(ng-controller='gitHubController as controller')
+  app:tab(caption='Floor', selected='true')
+    section()
+      div
+        a Contact us
+        |  about your floor project.
+      //- CHECK: is div appropriate for wanting to seperate new line? or should I use br? other?
+      div
+        a Gallery
+      form.well
+        div
+          span.text
+          | Number of square feet:
+          input.input-small
+        div
+          span.text
+            | Sealer:
+          input.input-small
+        div
+          span.text
+            | Grouting:
+          input.input-small
+        div
+          span.text
+            | Your total is: $__
+        button.btn.btn-primary
+          | Continue with order
+        //- CHECK html conventions correct?
+        p or
+        button Contact us
 
   app:tab(caption='Shower')
     section(ng-controller='gitHubController as controller')
@@ -9,11 +36,9 @@ app:tabs
     section(ng-controller='gitHubController as controller')
 
 
-  app:tab(caption='GitHub', selected='true')
+  app:tab(caption='GitHub')
     section(ng-controller='gitHubController as controller')
-      .alert.alert-info(ng-show='!controller.searchTerm.length')
-        h4.alert-heading Heads up!
-        span Enter GitHub search criteria.
+      
       form.well.form-search(ng-submit='controller.search(controller.searchTerm)')
         input.input-medium.search-query(type='text', ng-model='controller.searchTerm')
         button.btn(type='submit')
