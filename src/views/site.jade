@@ -9,5 +9,15 @@
 			| Call us today
 			//- a(href='https://twitter.com/CaryLandholt', target='_blank') {{'CaryLandholt' | twitterfy}}
 .container
+	nav.navbar.navbar-default(role="navigation")
+		.collapse.navbar-collapse
+			ul.nav.navbar-nav
+				li.active
+					a Home
+				li
+					a About
+				li
+					a Contact
+
 	.row
 		ng:include(src='\'/views/body.html\'')
