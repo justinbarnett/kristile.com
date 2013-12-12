@@ -43,7 +43,8 @@
 		"grunt-prompt": "~0.1.2",
 		"karma-junit-reporter": "~0.2.1",
 		"load-grunt-tasks": "~0.2.0",
-		"time-grunt": "~0.2.3"
+		"time-grunt": "~0.2.3",
+		"cloudinary": ""
 	},
 	"engines": {
 		"node": "0.8.x",
