@@ -7,4 +7,4 @@ class Config
 			redirectTo: '/github'
 
 # angular.module('app').config ['$routeProvider', Config]
-angular.module('app', ['ui.bootstrap']).config ['$routeProvider', Config]
+angular.module('app').config ['$routeProvider', Config]
