@@ -5,12 +5,20 @@ app:tabs
       form.well(ng-submit="controller.insertQuote(controller.quote)")
         span Enter number of square feet:
         input(type='text', ng-model='controller.sf', placeholder="28")
-        |  x $10 = {{controller.sf}}
+          //- FIXME:
+        | {{controller.sf}} x ${{controller.labor.price}} = ${{controller.labor.total}}
         br
+        //- project= floor
+        //- number of sf:
+        //- # inserts
+        //- sealer?
+        //- cauking ?
+        //- quote.total
+        //- 
 
         span Enter number of inserts:
-        input(type='text', ng-model='controller.quote.price', placeholder="28")
-        |  x $10 = {{controller.quote.price}}
+        input(type='text', ng-model='controller.quote.price', placeholder="0")
+        | {{controller.sf}} x ${{controller.labor.price}} = ${{controller.labor.total}}
 
         ul
           li.row(ng-repeat='quote in controller.quotes')
