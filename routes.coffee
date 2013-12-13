@@ -5,6 +5,12 @@ people = [
 	{"id": "#{nextId++}", "name": "Planet", "age": "8"}
 ]
 
+
+contacts = [
+  {"id": "#{nextId++}", "name": "foo", "email": "foo@email.com"}
+  {"id": "#{nextId++}", "name": "Planet", "email": "foo@email.com"}
+]
+
 isUniqueName = (name) ->
 	(name for person in people when person.name is name).length is 0
 

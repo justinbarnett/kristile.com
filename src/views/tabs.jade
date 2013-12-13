@@ -1,6 +1,29 @@
 app:tabs
   app:tab(caption='Floor', selected='true')
-    section()
+    h2 Step 1: Calculate a total quote
+    section(ng-controller='quoteController as controller')
+      form.well(ng-submit="controller.insertQuote(controller.quote)")
+        span Enter number of square feet:
+        input(type='text', ng-model='controller.sf', placeholder="28")
+        |  x $10 = {{controller.sf}}
+        br
+
+        span Enter number of inserts:
+        input(type='text', ng-model='controller.quote.price', placeholder="28")
+        |  x $10 = {{controller.quote.price}}
+
+        ul
+          li.row(ng-repeat='quote in controller.quotes')
+            a(ng-href='#/quotes/{{quote.id}}', ng-bind='quote.price')
+            //- a(ng-bind="quote.price")
+        //- copy from angulrapp examples
+        //- gives total
+        //- add grouting
+        //- all total
+        //- persist as guest.quote
+        //- issue: see models in terminal
+        //- how to use $log
+
       h2 Floor Tile 
       div
         a Contact us
@@ -8,7 +31,7 @@ app:tabs
       //- CHECK: is div appropriate for wanting to seperate new line? or should I use br? other?
       div
         a Gallery
-      form.well
+      //- form.well
         ng:include(src="'/views/quote-calculator.html'")
         ng:include(src="'/views/contact-form.html'")
     
@@ -37,6 +60,7 @@ app:tabs
     .row
       .col-lg-6
         section(ng-controller='contactController as controller')
+
           .alert.alert-danger(ng-show='!!controller.error')
             h4.alert-heading(ng-bind='controller.error.title')
             span(ng-bind='controller.error.message')
@@ -46,11 +70,20 @@ app:tabs
               //- span.text-info Try adding a duplicate name.
             input.input-medium(type='text', ng-model='controller.contact.name', placeholder='Name')
             input.input-small(type='text', ng-model='controller.contact.email', placeholder='Email')
+            input.input-small(type='text', ng-model='controller.contact.message', placeholder='Message')
             button.btn(type='submit')
               | Send
-          ul(ng-hide='!controller.contacts.length')
-            li.row(ng-repeat='contact in controller.contacts track by contact.id | orderBy:\'name\'')
-              a(ng-href='#/contacts/{{contact.id}}', ng-bind='contact.name')
+
+          li.dropdown
+            a.dropdown-toggle
+              | click to see submits
+            ul.dropdown-menu(ng-hide='!controller.contacts.length')
+              li.row(ng-repeat='contact in controller.contacts track by contact.id | orderBy:\'name\'')
+                a(ng-href='#/contacts/{{contact.id}}', ng-bind='contact.name')
+                br
+                a(ng-href='#/contacts/{{contact.id}}', ng-bind='contact.email')
+                br
+                a(ng-href='#/contacts/{{contact.id}}', ng-bind='contact.message')
 
          //- <div class="col-lg-2">
           //-       <section ng-controller="personDetailsController as controller">
