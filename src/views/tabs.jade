@@ -20,38 +20,37 @@ app:tabs
     section(ng-controller='gitHubController as controller')
 
 
-  app:tab(caption='GitHub')
-    section(ng-controller='gitHubController as controller')
+  //- app:tab(caption='GitHub')
+  //-   section(ng-controller='gitHubController as controller')
       
-      form.well.form-search(ng-submit='controller.search(controller.searchTerm)')
-        input.input-medium.search-query(type='text', ng-model='controller.searchTerm')
-        button.btn(type='submit')
-          i.glyphicon.glyphicon-search
-          | Search
-      ul(ng-hide='!controller.repos.length')
-        li(ng-repeat='repo in controller.repos track by repo.id | orderBy:\'pushed_at\':true')
-          a(ng-href='{{repo.clone_url}}', ng-bind='repo.name', target='_blank')
-          div(ng-bind='repo.description')
+  //-     form.well.form-search(ng-submit='controller.search(controller.searchTerm)')
+  //-       input.input-medium.search-query(type='text', ng-model='controller.searchTerm')
+  //-       button.btn(type='submit')
+  //-         i.glyphicon.glyphicon-search
+  //-         | Search
+  //-     ul(ng-hide='!controller.repos.length')
+  //-       li(ng-repeat='repo in controller.repos track by repo.id | orderBy:\'pushed_at\':true')
+  //-         a(ng-href='{{repo.clone_url}}', ng-bind='repo.name', target='_blank')
+  //-         div(ng-bind='repo.description')
 
-  app:tab(caption='People')
+  app:tab(caption='Contact us')
     .row
       .col-lg-6
-        section(ng-controller='personController as controller')
+        section(ng-controller='contactController as controller')
           .alert.alert-danger(ng-show='!!controller.error')
             h4.alert-heading(ng-bind='controller.error.title')
             span(ng-bind='controller.error.message')
-          form.well.form-search(ng-submit='controller.insertPerson(controller.person)')
-            p
-              span.label.label-info Heads up!
-              span.text-info Try adding a duplicate name.
-            input.input-medium(type='text', ng-model='controller.person.name', placeholder='Name')
-            input.input-small(type='text', ng-model='controller.person.age', placeholder='Age')
+          form.well.form-search(ng-submit='controller.insertContact(controller.contact)')
+            p Contact us
+              //- span.label.label-info Heads up!
+              //- span.text-info Try adding a duplicate name.
+            input.input-medium(type='text', ng-model='controller.contact.name', placeholder='Name')
+            input.input-small(type='text', ng-model='controller.contact.email', placeholder='Email')
             button.btn(type='submit')
-              i.glyphicon.glyphicon-plus
-              | Add Person
-          ul(ng-hide='!controller.people.length')
-            li.row(ng-repeat='person in controller.people track by person.id | orderBy:\'name\'')
-              a(ng-href='#/people/{{person.id}}', ng-bind='person.name')
+              | Send
+          ul(ng-hide='!controller.contacts.length')
+            li.row(ng-repeat='contact in controller.contacts track by contact.id | orderBy:\'name\'')
+              a(ng-href='#/contacts/{{contact.id}}', ng-bind='contact.name')
 
          //- <div class="col-lg-2">
           //-       <section ng-controller="personDetailsController as controller">

@@ -3,8 +3,8 @@ class Run
 		nextId = 0
 
 		people = [
-			{id: nextId++, name: 'Saasha', age: 6}
-			{id: nextId++, name: 'Planet', age: 8}
+			{id: nextId++, name: 'Saasha', email: 'foobar@email.com', message: 'I have a question about a job'}
+			{id: nextId++, name: 'Planet', email: 'foobar@email.com'}
 		]
 
 		@$httpBackend.whenGET('/people').respond people
