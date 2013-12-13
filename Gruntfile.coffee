@@ -376,6 +376,7 @@ module.exports = (grunt) ->
 						'ngAnimate': 'libs/angular-animate.min.js'
 						'ngMockE2E': 'libs/angular-mocks.js'
 						'ngRoute': 'libs/angular-route.min.js'
+						'ui.bootstrap': 'libs/ui-bootstrap.min.js'
 				]
 				require: 'NGBOOTSTRAP'
 			prod:
@@ -396,6 +397,7 @@ module.exports = (grunt) ->
 					'NGAPP':
 						'ngAnimate': 'libs/angular-animate.min.js'
 						'ngRoute': 'libs/angular-route.min.js'
+						'ui.bootstrap': 'libs/ui-bootstrap.min.js'
 				]
 				require: '<%= shimmer.dev.require %>'
 
