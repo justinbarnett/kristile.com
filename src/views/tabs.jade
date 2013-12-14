@@ -3,34 +3,55 @@ app:tabs
     h2 Step 1: Calculate a total quote
     section(ng-controller='quoteController as controller')
       form.well(ng-submit="controller.insertQuote(controller.quote)")
+        span Project:
+        input(type='text', ng-model='controller.project.name')
+        | {{controller.project.name}}
+        br
+
         span Enter number of square feet:
         input(type='text', ng-model='controller.sf', placeholder="28")
           //- FIXME:
         | {{controller.sf}} x ${{controller.labor.price}} = ${{controller.labor.total}}
         br
-        //- project= floor
-        //- number of sf:
-        //- # inserts
-        //- sealer?
-        //- cauking ?
-        //- quote.total
-        //- 
 
         span Enter number of inserts:
-        input(type='text', ng-model='controller.quote.price', placeholder="0")
-        | {{controller.sf}} x ${{controller.labor.price}} = ${{controller.labor.total}}
+        input(type='text', ng-model='controller.inserts.amount', placeholder="0")
+        | {{controller.inserts.amount}} x ${{controller.inserts.price}} = ${{controller.inserts.total}}
+        br
 
-        ul
-          li.row(ng-repeat='quote in controller.quotes')
-            a(ng-href='#/quotes/{{quote.id}}', ng-bind='quote.price')
-            //- a(ng-bind="quote.price")
-        //- copy from angulrapp examples
-        //- gives total
-        //- add grouting
-        //- all total
-        //- persist as guest.quote
-        //- issue: see models in terminal
-        //- how to use $log
+        span Add sealer?
+        button.btn.btn-primary(type="button", ng-model='controller.sealer.amount', btn-checkbox btn-checkbox-true="1", btn-checkbox-false="0")
+          | Sealer
+        | {{controller.sealer.amount}} x ${{controller.sealer.price}} = ${{controller.sealer.total}}
+        br
+
+        span Add caulking?
+        button.btn.btn-primary(type="button", ng-model='controller.caulking.amount', btn-checkbox btn-checkbox-true="1", btn-checkbox-false="0")
+          | Caulking
+        | {{controller.caulking.amount}} x ${{controller.caulking.price}} = ${{controller.caulking.total}}
+        p
+        | Total: ${{controller.quote.total}} 
+        button.btn(type='submit')
+          | Submit
+        pre {{controller.sf}}
+        pre {{controller.labor}}
+        pre {{controller.quotes}}
+        pre {{controller.options}}
+
+
+
+
+      ul
+        li.row(ng-repeat='quote in controller.quotes')
+          a(ng-href='#/quotes/{{quote.id}}', ng-bind='quote.price')
+          //- a(ng-bind="quote.price")
+      //- copy from angulrapp examples
+      //- gives total
+      //- add grouting
+      //- all total
+      //- persist as guest.quote
+      //- issue: see models in terminal
+      //- how to use $log
 
       h2 Floor Tile 
       div
