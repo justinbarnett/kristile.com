@@ -11,7 +11,6 @@ class Controller
       .success (results) =>
         @error = ''
         @quote = {}
-
         setQuotes()
       .error (results, status) =>
         if status is 403
@@ -42,6 +41,5 @@ class Controller
       if option.added?
         quote.total += option.total
 
-
-
-angular.module('app').controller 'quoteController', ['$log', 'quoteService', Controller]
+angular.module('app')
+  .controller 'quoteController', ['$log', 'quoteService', Controller]
