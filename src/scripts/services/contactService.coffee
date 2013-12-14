@@ -1,21 +1,21 @@
 class Service
-	urlBase = '/contacts'
+  urlBase = '/contacts'
 
-	constructor: (@$log, @$http) ->
+  constructor: (@$log, @$http) ->
 
-	get: ->
-		@$http.get(urlBase)
-		.then (results) ->
-			results.data
+  get: ->
+    @$http.get(urlBase)
+    .then (results) ->
+      results.data
 
-	getPerson: (id) ->
-		@$http.get("#{urlBase}/#{id}")
-		.then (results) ->
-			results.data
+  getPerson: (id) ->
+    @$http.get("#{urlBase}/#{id}")
+    .then (results) ->
+      results.data
 
-	save: (contact) ->
-		@$http.post("#{urlBase}", contact)
-		.error (results, status) ->
-			{results, status}
+  save: (contact) ->
+    @$http.post("#{urlBase}", contact)
+    .error (results, status) ->
+      {results, status}
 
 angular.module('app').service 'contactService', ['$log', '$http', Service]
