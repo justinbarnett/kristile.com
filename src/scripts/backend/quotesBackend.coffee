@@ -3,7 +3,7 @@ class Run
 		nextId = 0
 
 		quotes = [
-			{id: nextId++, project: 'floor', total: 4 }
+			{id: nextId++, project: 'floor', total: 2 }
 			{id: nextId++, project: 'shower', total: 10 }
 		]
 

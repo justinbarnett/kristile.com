@@ -1,46 +1,48 @@
 class Controller
-  constructor: (@$log, @quoteService) ->
-    # TODO How do I see what value this is? like the RoR debug script
-    @foo = [1]
-    setQuotes = =>
-      @quoteService.get().then (results) =>
-        @quotes = results
+	constructor: (@$log, @quoteService) ->
+		setQuotes = =>
+			@quoteService.get().then (results) =>
+				@quotes = results
+				# defaults / placeholders:
+				@sf = 28
+				# @quotes = [{ price: 2, amount: 0, total: 0, added: false }]
+				sum = () =>
+					this.price * this.amount
+				@labor = { price: 10, amount: 0, total: sum(), added: true }
+				@inserts = { price: 10, amount: 0, total: 0, added: false }
+				@caulking = { price: 15, amount: 0, total: 0, added: false }
+				@sealer = { price: 15, amount: 0, total: 0, added: false }
+				@labor.amount = @sf
+				@sealer.amount = @sf
+				@project = {name: "floor"}
+				@options = {}
+				# user inputs:
+				# @sf = 0
+				@inserts.amount = 0
+				@caulking.added = true
+				@sealer.added = true
 
-    @insertQuote = (quote) =>
-      @quoteService.save(quote)
-      .success (results) =>
-        @error = ''
-        @quote = {}
+				for option in @options
+					option.total = option.price * option.amount
+					if option.added?
+						@quote.total += option.total
 
-        setQuotes()
-      .error (results, status) =>
-        if status is 403
-          @error = results
-      .then (results) ->
-        results
+		@insertQuote = (quote) =>
+			@quoteService.save(quote)
+			.success (results) =>
+				@error = ''
+				@quote = {}
 
-    setQuotes()
+				setQuotes()
+			.error (results, status) =>
+				if status is 403
+					@error = results
+			.then (results) ->
+				results
+
+		setQuotes()
 
 
-    # defaults / placeholders:
-    sf = 28 
-    sealer = { price: 2, amount: 0, total: 0}
-    labor = { price: 10, amount: 0, total: 0}
-    inserts = { price: 10, amount: 0, total: 0}
-    caulking = { price: 15, amount: 0, total: 0}
-    labor.amount = sf
-    sealer.amount = sf
-    project.name = "floor"
-    # user inputs:
-    sf = 0
-    inserts.amount = 0
-    caulking.added = true
-    sealer.added = true
-
-    for option in options
-      option.total = option.price * option.amount
-      if option.added?
-        quote.total += option.total)
 
 
 
