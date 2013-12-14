@@ -1,21 +1,21 @@
 class Service
-	urlBase = '/quotes'
+  urlBase = '/quotes'
 
-	constructor: (@$log, @$http) ->
+  constructor: (@$log, @$http) ->
 
-	get: ->
-		@$http.get(urlBase)
-		.then (results) ->
-			results.data
+  get: ->
+    @$http.get(urlBase)
+    .then (results) ->
+      results.data
 
-	getQuote: (id) ->
-		@$http.get("#{urlBase}/#{id}")
-		.then (results) ->
-			results.data
+  getQuote: (id) ->
+    @$http.get("#{urlBase}/#{id}")
+    .then (results) ->
+      results.data
 
-	save: (quote) ->
-		@$http.post("#{urlBase}", quote)
-		.error (results, status) ->
-			{results, status}
+  save: (quote) ->
+    @$http.post("#{urlBase}", quote)
+    .error (results, status) ->
+      {results, status}
 
 angular.module('app').service 'quoteService', ['$log', '$http', Service]
