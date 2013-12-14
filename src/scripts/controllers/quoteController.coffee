@@ -23,7 +23,7 @@ class Controller
 
 
     # defaults / placeholders:
-    sf = 28 
+    sf = 28
     sealer = { price: 2, amount: 0, total: 0}
     labor = { price: 10, amount: 0, total: 0}
     inserts = { price: 10, amount: 0, total: 0}
@@ -40,7 +40,7 @@ class Controller
     for option in options
       option.total = option.price * option.amount
       if option.added?
-        quote.total += option.total)
+        quote.total += option.total
 
 
 
