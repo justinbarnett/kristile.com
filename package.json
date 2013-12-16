@@ -25,6 +25,7 @@
 	"dependencies": {
 		"coffee-script": "~1.6.3",
 		"express": "~3.4.6",
+    "jade": "0.35.x",
 		"grunt": "~0.4.2",
 		"grunt-bower-task": "~0.3.4",
 		"grunt-coffeelint": "~0.0.8",
